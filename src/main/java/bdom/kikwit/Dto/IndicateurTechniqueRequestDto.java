@@ -1,15 +1,15 @@
-package bdom.kikwit.Entities;
+package bdom.kikwit.Dto;
 
-import jakarta.persistence.Entity;
+import com.fasterxml.jackson.annotation.JsonRootName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import java.util.Date;
 
-@Entity @Data @NoArgsConstructor @AllArgsConstructor @ToString
-public class IndicateurTechnique {
+@Data @NoArgsConstructor @AllArgsConstructor
+@JsonRootName(value="indicateur")
+public class IndicateurTechniqueRequestDto {
     private Long id;
     private Date periode;
     private Long id_ess;
@@ -31,6 +31,5 @@ public class IndicateurTechnique {
     private int nb_dc_ap48h;
     private int nb_infePostOp;
     private int nb_diarheSimple;
-
 
 }

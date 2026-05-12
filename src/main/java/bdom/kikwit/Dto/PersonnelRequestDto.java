@@ -1,17 +1,13 @@
-package bdom.kikwit.Entities;
+package bdom.kikwit.Dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonRootName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-@Entity @Data @NoArgsConstructor @AllArgsConstructor @ToString
-public class Personnel {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Data @AllArgsConstructor @NoArgsConstructor
+@JsonRootName(value="personnel")
+public class PersonnelRequestDto {
     private Long id;
     private Long id_ess;
     private int nb_agent_matricule;
@@ -20,5 +16,4 @@ public class Personnel {
     private int nb_nv_agent_salaireEtat;
     private int nb_nv_agent_primeEtat;
     private int nb_agent_primeLocale;
-
 }
