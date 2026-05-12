@@ -14,6 +14,5 @@ import java.util.List;
 public class CategorieResponseDto {
     private Long id;
     private String libelle;
-    @OneToMany(mappedBy = "categorie")
-    private List<Etablissement> etablissementList;
+
 }

@@ -13,7 +13,5 @@ public class EtablissementRequestDto {
     private Long id;
     private String nom;
     private String zone;
-    @ManyToOne()
-    @JoinColumn(name = "categorie_id", nullable = false)
-    private Categorie categorie;
+    private Long id_cat;
 }

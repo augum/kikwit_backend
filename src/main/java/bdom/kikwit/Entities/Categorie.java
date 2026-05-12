@@ -13,6 +13,5 @@ public class Categorie {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
    private String libelle;
-   @OneToMany(mappedBy = "categorie")
-   private List<Etablissement> etablissementList;
+
 }

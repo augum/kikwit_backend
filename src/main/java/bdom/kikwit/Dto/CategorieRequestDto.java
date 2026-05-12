@@ -18,6 +18,5 @@ public class CategorieRequestDto {
 
     private Long id;
     private String libelle;
-    @OneToMany(mappedBy = "categorie")
-    private List<Etablissement> etablissementList;
+
 }
