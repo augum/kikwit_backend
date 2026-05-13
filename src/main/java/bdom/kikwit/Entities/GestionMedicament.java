@@ -9,7 +9,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor @ToString
@@ -18,7 +19,7 @@ public class GestionMedicament {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long id_ess;
-    private Date periode;
+    private LocalDate periode;
     private double capital_depart;
     private double capital_fin_moi;
     private String croissance;
