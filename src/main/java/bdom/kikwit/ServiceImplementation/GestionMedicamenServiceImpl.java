@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Service @AllArgsConstructor @Transactional
 public class GestionMedicamenServiceImpl implements GestionMedicamenService {
     private GestionMedicamentRepository repository;
@@ -28,16 +30,33 @@ public class GestionMedicamenServiceImpl implements GestionMedicamenService {
 
     @Override
     public GestionMedicamentResponseDto update(Long id, GestionMedicamentRequestDto requestDto) {
-        return null;
+        GestionMedicament medicament = mapper.fromGestionMedicamentRequestDto(requestDto);
+        GestionMedicament getMedicament = repository.findById(id).get();
+        getMedicament.setBenefice(medicament.getBenefice());
+        getMedicament.setPeriode(medicament.getPeriode());
+        getMedicament.setCroissance(medicament.getCroissance());
+        getMedicament.setCapital_depart(medicament.getCapital_depart());
+        getMedicament.setCapital_fin_moi(medicament.getCapital_fin_moi());
+        getMedicament.setId_ess(medicament.getId_ess());
+        GestionMedicament save = repository.save(getMedicament);
+        return mapper.toGestionMedicamentResponseDto(save);
     }
-
+/*
+* Recuperation d'une gestion de medicament
+* */
     @Override
     public GestionMedicamentResponseDto getOne(Long id) {
-        return null;
+        GestionMedicament medicament = repository.findById(id).get();
+        return mapper.toGestionMedicamentResponseDto(medicament);
     }
-
+ /*
+ * Liste des gestions medicaments
+ * */
     @Override
     public List<GestionMedicamentResponseDto> getAll() {
-        return List.of();
+        List<GestionMedicament> list = repository.findAll();
+        return list.stream()
+                .map(gestionMedicament -> mapper.toGestionMedicamentResponseDto(gestionMedicament))
+                .collect(Collectors.toList());
     }
 }
