@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface CartographieStructureService{
 
-    CartographieStructureResponseDto save(CategorieRequestDto requestDto);
+    CartographieStructureResponseDto save(CartographieStructureRequestDto requestDto);
     CartographieStructureResponseDto update(Long id, CartographieStructureRequestDto requestDto);
     CartographieStructureResponseDto getOne(Long id);
     List<CartographieStructureResponseDto> liste();

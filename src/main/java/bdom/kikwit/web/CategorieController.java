@@ -31,7 +31,7 @@ public class CategorieController {
     /*
     * Recupération d'une seule catégorie
     * */
-    @GetMapping(path = "/categorie/{id}")
+    @GetMapping(path = "/categories/{id}")
     public CategorieResponseDto getOne(@PathVariable Long id){
         return service.getOne(id);
     }

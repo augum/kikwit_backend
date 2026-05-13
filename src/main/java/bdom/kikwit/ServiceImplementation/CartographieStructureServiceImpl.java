@@ -14,8 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 @Transactional
 public class CartographieStructureServiceImpl implements CartographieStructureService {
+
     @Override
-    public CartographieStructureResponseDto save(CategorieRequestDto requestDto) {
+    public CartographieStructureResponseDto save(CartographieStructureRequestDto requestDto) {
         return null;
     }
 
