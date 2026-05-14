@@ -9,4 +9,5 @@ public interface SourceEnergieService {
     SourceEnergieResponseDto save(SourceEnergieRequestDto requestDto);
     SourceEnergieResponseDto update(Long id, SourceEnergieRequestDto requestDto);
     List<SourceEnergieResponseDto> getAll();
+    String delete(Long id);
 }
