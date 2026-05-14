@@ -20,7 +20,8 @@ public class CartographieStructure {
     private Long id_se;
     private boolean presence_blocop;
     private boolean capacite_transfusion;
-    private String solaire;
+    private String electricite;
+    private String eau;
     private String reabilitation;
     private String forage;
     private String incinerateur;

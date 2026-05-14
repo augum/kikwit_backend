@@ -5,13 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data @NoArgsConstructor @AllArgsConstructor
 @JsonRootName(value="indicateur")
 public class IndicateurTechniqueRequestDto {
     private Long id;
-    private Date periode;
+    private LocalDate periode;
     private Long id_ess;
     private int nb_nv_casCuratif;
     private int nb_cpn1;
