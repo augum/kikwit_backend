@@ -2,8 +2,10 @@ package bdom.kikwit.ServiceImplementation;
 
 import bdom.kikwit.Dto.EtablissementRequestDto;
 import bdom.kikwit.Dto.EtablissementResponseDto;
+import bdom.kikwit.Entities.Categorie;
 import bdom.kikwit.Entities.Etablissement;
 import bdom.kikwit.Mappers.EtablissementMapper;
+import bdom.kikwit.Repositories.CategorieRepository;
 import bdom.kikwit.Repositories.EtablissementRepository;
 import bdom.kikwit.Services.EtablissementService;
 
@@ -17,6 +19,7 @@ import java.util.stream.Collectors;
 @Service @AllArgsConstructor @Transactional
 public class EtablissementServiceImpl implements EtablissementService {
     private EtablissementRepository repository;
+    private CategorieRepository categorieRepository;
     private EtablissementMapper mapper;
     /*
     * Enregistrement d'un etablissement
@@ -49,6 +52,10 @@ public class EtablissementServiceImpl implements EtablissementService {
     @Override
     public List<EtablissementResponseDto> getAll() {
         List<Etablissement> list = repository.findAll();
+        for(Etablissement ets : list){
+            Categorie cat = categorieRepository.findById(ets.getId_cat()).get();
+            ets.setCategorie(cat);
+        }
         return list.stream()
                 .map(etablissement -> mapper.toEtablissementResponseDto(etablissement))
                 .collect(Collectors.toList());

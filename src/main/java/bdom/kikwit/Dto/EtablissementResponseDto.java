@@ -15,4 +15,5 @@ public class EtablissementResponseDto {
     private String nom;
     private String zone;
     private Long id_cat;
+    private Categorie categorie;
 }

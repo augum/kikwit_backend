@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data @NoArgsConstructor @AllArgsConstructor
@@ -12,7 +13,7 @@ import java.util.Date;
 public class GestionMedicamentResponseDto {
 
     private Long id_ess;
-    private Date periode;
+    private LocalDate periode;
     private double capital_depart;
     private double capital_fin_moi;
     private String croissance;

@@ -12,4 +12,6 @@ public class Etablissement {
     private String nom;
     private String zone;
     private Long id_cat;
+    @Transient
+    private Categorie categorie;
 }
