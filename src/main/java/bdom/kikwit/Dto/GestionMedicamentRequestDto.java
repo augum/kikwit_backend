@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 @Data @NoArgsConstructor @AllArgsConstructor
-@JsonRootName(value="medoc")
+@JsonRootName(value="Gestionmedicament")
 public class GestionMedicamentRequestDto {
     @Schema(description = "Identifiant unique", example = "10")
     private Long id;

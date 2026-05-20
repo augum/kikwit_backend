@@ -1,9 +1,6 @@
 package bdom.kikwit.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,4 +21,6 @@ public class GestionMedicament {
     private double capital_fin_moi;
     private String croissance;
     private String benefice;
+    @Transient
+    private Etablissement etablissement;
 }

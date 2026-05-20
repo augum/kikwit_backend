@@ -1,5 +1,6 @@
 package bdom.kikwit.Dto;
 
+import bdom.kikwit.Entities.Etablissement;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +10,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 @Data @NoArgsConstructor @AllArgsConstructor
-@JsonRootName(value="medoc")
+@JsonRootName(value="Gestionmedicament")
 public class GestionMedicamentResponseDto {
 
     private Long id_ess;
@@ -18,4 +19,5 @@ public class GestionMedicamentResponseDto {
     private double capital_fin_moi;
     private String croissance;
     private String benefice;
+    private Etablissement etablissement;
 }

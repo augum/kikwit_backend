@@ -2,8 +2,10 @@ package bdom.kikwit.ServiceImplementation;
 
 import bdom.kikwit.Dto.PersonnelRequestDto;
 import bdom.kikwit.Dto.PersonnelResponseDto;
+import bdom.kikwit.Entities.Etablissement;
 import bdom.kikwit.Entities.Personnel;
 import bdom.kikwit.Mappers.PersonnelMapper;
+import bdom.kikwit.Repositories.EtablissementRepository;
 import bdom.kikwit.Repositories.PersonnelRepository;
 import bdom.kikwit.Services.PersonnalService;
 import lombok.AllArgsConstructor;
@@ -17,6 +19,7 @@ import java.util.stream.Collectors;
 public class PersonnalServiceImpl implements PersonnalService {
     private PersonnelRepository repository;
     private PersonnelMapper mapper;
+    private EtablissementRepository etablissementRepository;
 
     //Enregistrement des informations sur les personnels
     @Override
@@ -44,6 +47,10 @@ public class PersonnalServiceImpl implements PersonnalService {
     @Override
     public List<PersonnelResponseDto> getAll() {
        List<Personnel>  list = repository.findAll();
+       for(Personnel pers:list){
+           Etablissement etablissement = etablissementRepository.findById(pers.getId()).get();
+           pers.setEtablissement(etablissement);
+       }
         return list.stream()
                 .map(personnel -> mapper.toPersonnelResponseDto(personnel))
                 .collect(Collectors.toList());

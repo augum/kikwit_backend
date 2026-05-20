@@ -1,5 +1,6 @@
 package bdom.kikwit.Dto;
 
+import bdom.kikwit.Entities.Etablissement;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,5 +33,6 @@ public class IndicateurTechniqueResponseDto {
     private int nb_dc_ap48h;
     private int nb_infePostOp;
     private int nb_diarheSimple;
+    private Etablissement etablissement;
 
 }

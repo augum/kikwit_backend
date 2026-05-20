@@ -1,9 +1,6 @@
 package bdom.kikwit.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,6 +33,8 @@ public class IndicateurTechnique {
     private int nb_dc_ap48h;
     private int nb_infePostOp;
     private int nb_diarheSimple;
+    @Transient
+    private Etablissement etablissement;
 
 
 }

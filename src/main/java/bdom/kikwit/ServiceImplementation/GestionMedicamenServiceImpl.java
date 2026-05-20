@@ -2,8 +2,10 @@ package bdom.kikwit.ServiceImplementation;
 
 import bdom.kikwit.Dto.GestionMedicamentRequestDto;
 import bdom.kikwit.Dto.GestionMedicamentResponseDto;
+import bdom.kikwit.Entities.Etablissement;
 import bdom.kikwit.Entities.GestionMedicament;
 import bdom.kikwit.Mappers.GestionMedMapper;
+import bdom.kikwit.Repositories.EtablissementRepository;
 import bdom.kikwit.Repositories.GestionMedicamentRepository;
 import bdom.kikwit.Services.GestionMedicamenService;
 
@@ -18,6 +20,7 @@ import java.util.stream.Collectors;
 public class GestionMedicamenServiceImpl implements GestionMedicamenService {
     private GestionMedicamentRepository repository;
     private GestionMedMapper mapper;
+    private EtablissementRepository etablissementRepository;
     /*
     * Enregistrer la gestion de medicament
     * */
@@ -55,6 +58,10 @@ public class GestionMedicamenServiceImpl implements GestionMedicamenService {
     @Override
     public List<GestionMedicamentResponseDto> getAll() {
         List<GestionMedicament> list = repository.findAll();
+        for(GestionMedicament gm: list){
+            Etablissement etablissement = etablissementRepository.findById(gm.getId_ess()).get();
+            gm.setEtablissement(etablissement);
+        }
         return list.stream()
                 .map(gestionMedicament -> mapper.toGestionMedicamentResponseDto(gestionMedicament))
                 .collect(Collectors.toList());

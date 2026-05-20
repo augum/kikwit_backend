@@ -2,8 +2,10 @@ package bdom.kikwit.ServiceImplementation;
 
 import bdom.kikwit.Dto.IndicateurTechniqueRequestDto;
 import bdom.kikwit.Dto.IndicateurTechniqueResponseDto;
+import bdom.kikwit.Entities.Etablissement;
 import bdom.kikwit.Entities.IndicateurTechnique;
 import bdom.kikwit.Mappers.IndicateurTechniqueMapper;
+import bdom.kikwit.Repositories.EtablissementRepository;
 import bdom.kikwit.Repositories.IndicateurTechniqueRepository;
 import bdom.kikwit.Services.IndicateurTechniqueService;
 import lombok.AllArgsConstructor;
@@ -17,6 +19,7 @@ import java.util.stream.Collectors;
 public class IndicateurTechniqueServiceImpl implements IndicateurTechniqueService {
     private IndicateurTechniqueMapper mapper;
     private IndicateurTechniqueRepository repository;
+    private EtablissementRepository etablissementRepository;
 
     //Insertion d'un indicateur
     @Override
@@ -57,6 +60,10 @@ public class IndicateurTechniqueServiceImpl implements IndicateurTechniqueServic
     @Override
     public List<IndicateurTechniqueResponseDto> getAll() {
         List<IndicateurTechnique> technique = repository.findAll();
+        for(IndicateurTechnique it:technique){
+            Etablissement etablissement = etablissementRepository.findById(it.getId_ess()).get();
+            it.setEtablissement(etablissement);
+        }
         return technique.stream()
                 .map(indicateurTechnique -> mapper.toIndicateurTechniqueResponseDto(indicateurTechnique))
                 .collect(Collectors.toList());

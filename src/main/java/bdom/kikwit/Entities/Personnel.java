@@ -1,9 +1,6 @@
 package bdom.kikwit.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,5 +17,7 @@ public class Personnel {
     private int nb_nv_agent_salaireEtat;
     private int nb_nv_agent_primeEtat;
     private int nb_agent_primeLocale;
+    @Transient
+    private Etablissement etablissement;
 
 }
