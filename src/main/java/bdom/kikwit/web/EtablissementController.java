@@ -40,7 +40,7 @@ public class EtablissementController {
     /*
     *Modification d'un etablissement
     * */
-    @PatchMapping(path = "/etablissement/{id}")
+    @PatchMapping(path = "/etablissements/{id}")
     @Operation(summary = "modification d'un etablissement")
     public EtablissementResponseDto update(@PathVariable Long id,@RequestBody EtablissementRequestDto requestDto){
         return  service.update(id,requestDto);

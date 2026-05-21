@@ -36,7 +36,7 @@ public class GestionMedicamentController {
     /*
     * Recupera d'une ligne de gestion par son Id
     * */
-    @GetMapping(path = "/medicament/{id}")
+    @GetMapping(path = "/medicaments/{id}")
     @Operation(summary = "Affiche un enregistrement")
     public GestionMedicamentResponseDto getOne(@PathVariable Long id){
         return service.getOne(id);
