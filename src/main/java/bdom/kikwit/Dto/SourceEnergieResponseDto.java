@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data @NoArgsConstructor @AllArgsConstructor
 @JsonRootName(value="sourceernergie")
 public class SourceEnergieResponseDto {
-
+    private Long id;
     private String libelle;
     @Enumerated(EnumType.STRING)
     private TypeEnergie typeEnergie;

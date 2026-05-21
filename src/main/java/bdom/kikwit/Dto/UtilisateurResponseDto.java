@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @JsonRootName(value="utilisateur")
 public class UtilisateurResponseDto {
 
-
+    private Long id;
     private String login;
     private String password;
     private Long id_role;

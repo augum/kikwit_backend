@@ -12,7 +12,7 @@ import java.util.Date;
 @Data @NoArgsConstructor @AllArgsConstructor
 @JsonRootName(value="indicateur")
 public class IndicateurTechniqueResponseDto {
-
+    private Long id;
     private LocalDate periode;
     private Long id_ess;
     private int nb_nv_casCuratif;

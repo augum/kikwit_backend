@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data @NoArgsConstructor @AllArgsConstructor
 @JsonRootName(value="cartographie")
 public class CartographieStructureResponseDto {
+    private Long id;
     @Schema(description = "Identifiant de la structure de santé", example = "1")
     private Long id_ess;
     @Schema(description = "Distance de la structure avec le bdom", example = "10km")

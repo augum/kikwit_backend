@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @JsonRootName(value="role")
 public class RoleResponseDto {
 
-
+    private Long id;
     private String libelle;
 }

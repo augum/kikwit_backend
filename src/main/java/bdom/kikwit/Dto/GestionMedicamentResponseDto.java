@@ -12,7 +12,7 @@ import java.util.Date;
 @Data @NoArgsConstructor @AllArgsConstructor
 @JsonRootName(value="Gestionmedicament")
 public class GestionMedicamentResponseDto {
-
+    private Long id;
     private Long id_ess;
     private LocalDate periode;
     private double capital_depart;
