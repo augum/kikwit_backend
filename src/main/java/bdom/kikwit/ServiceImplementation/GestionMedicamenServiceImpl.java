@@ -2,6 +2,7 @@ package bdom.kikwit.ServiceImplementation;
 
 import bdom.kikwit.Dto.GestionMedicamentRequestDto;
 import bdom.kikwit.Dto.GestionMedicamentResponseDto;
+import bdom.kikwit.Entities.CartographieStructure;
 import bdom.kikwit.Entities.Etablissement;
 import bdom.kikwit.Entities.GestionMedicament;
 import bdom.kikwit.Mappers.GestionMedMapper;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service @AllArgsConstructor @Transactional
@@ -52,7 +54,18 @@ public class GestionMedicamenServiceImpl implements GestionMedicamenService {
         GestionMedicament medicament = repository.findById(id).get();
         return mapper.toGestionMedicamentResponseDto(medicament);
     }
- /*
+
+    @Override
+    public String delete(Long id) {
+        Optional<GestionMedicament> gestionMedicament = repository.findById(id);
+        if (gestionMedicament.isPresent()){
+            repository.deleteById(id);
+            return " Gestion medicament supprimée avec succes";
+        }
+        return "Aucune Gestion medicament trouvée";
+    }
+
+    /*
  * Liste des gestions medicaments
  * */
     @Override

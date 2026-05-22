@@ -9,5 +9,6 @@ public interface GestionMedicamenService {
     GestionMedicamentResponseDto save(GestionMedicamentRequestDto requestDto);
     GestionMedicamentResponseDto update(Long id, GestionMedicamentRequestDto requestDto);
     GestionMedicamentResponseDto getOne(Long id);
+    String delete(Long id);
     List<GestionMedicamentResponseDto> getAll();
 }

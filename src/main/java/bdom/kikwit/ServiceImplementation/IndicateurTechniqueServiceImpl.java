@@ -2,6 +2,7 @@ package bdom.kikwit.ServiceImplementation;
 
 import bdom.kikwit.Dto.IndicateurTechniqueRequestDto;
 import bdom.kikwit.Dto.IndicateurTechniqueResponseDto;
+import bdom.kikwit.Entities.CartographieStructure;
 import bdom.kikwit.Entities.Etablissement;
 import bdom.kikwit.Entities.IndicateurTechnique;
 import bdom.kikwit.Mappers.IndicateurTechniqueMapper;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service @Transactional @AllArgsConstructor
@@ -56,7 +58,18 @@ public class IndicateurTechniqueServiceImpl implements IndicateurTechniqueServic
         repository.save(technique);
         return mapper.toIndicateurTechniqueResponseDto(technique);
     }
-// Liste de tous les indicateurs
+
+    @Override
+    public String delete(Long id) {
+        Optional<IndicateurTechnique> indicateurTechnique = repository.findById(id);
+        if (indicateurTechnique.isPresent()){
+            repository.deleteById(id);
+            return " Indicateur supprimée avec succes";
+        }
+        return "Aucun indicateur trouvée";
+    }
+
+    // Liste de tous les indicateurs
     @Override
     public List<IndicateurTechniqueResponseDto> getAll() {
         List<IndicateurTechnique> technique = repository.findAll();

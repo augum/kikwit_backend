@@ -8,5 +8,6 @@ import java.util.List;
 public interface IndicateurTechniqueService {
     IndicateurTechniqueResponseDto save(IndicateurTechniqueRequestDto requestDto);
     IndicateurTechniqueResponseDto update(Long id, IndicateurTechniqueRequestDto requestDto);
+    String delete(Long id);
     List<IndicateurTechniqueResponseDto> getAll();
 }

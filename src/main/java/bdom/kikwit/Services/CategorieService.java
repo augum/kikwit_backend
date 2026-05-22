@@ -10,5 +10,6 @@ public interface CategorieService {
     CategorieResponseDto save(CategorieRequestDto requestDto);
     CategorieResponseDto update(Long id, CategorieRequestDto requestDto);
     CategorieResponseDto getOne(Long id);
+    String delete(Long id);
     List<CategorieResponseDto> getAll();
 }

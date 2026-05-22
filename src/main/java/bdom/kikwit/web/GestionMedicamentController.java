@@ -49,5 +49,10 @@ public class GestionMedicamentController {
     public GestionMedicamentResponseDto update(@PathVariable Long id,@RequestBody GestionMedicamentRequestDto requestDto){
         return service.update(id,requestDto);
     }
+    @DeleteMapping(path = "/medicaments/{id}")
+    @Operation(summary = "Supprimé une gestion medicament")
+    public String delete(@PathVariable Long id){
+        return service.delete(id);
+    }
 
 }

@@ -81,7 +81,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
             repository.deleteById(id);
             return " Utilisateur supprimé avec succes";
         }
-        return "Aucune utilisateur trouvée";
+        return "Aucun utilisateur trouvé";
 
     }
 }

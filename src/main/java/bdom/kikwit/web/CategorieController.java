@@ -49,4 +49,9 @@ public class CategorieController {
     public CategorieResponseDto update(@PathVariable Long id,@RequestBody CategorieRequestDto requestDto){
         return  service.update(id,requestDto);
     }
+    @DeleteMapping(path = "/categories/{id}")
+    @Operation(summary = "Supprimé une categorie")
+    public String delete(@PathVariable Long id){
+        return service.delete(id);
+    }
 }

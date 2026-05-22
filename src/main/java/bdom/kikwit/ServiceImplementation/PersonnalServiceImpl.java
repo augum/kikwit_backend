@@ -2,6 +2,7 @@ package bdom.kikwit.ServiceImplementation;
 
 import bdom.kikwit.Dto.PersonnelRequestDto;
 import bdom.kikwit.Dto.PersonnelResponseDto;
+import bdom.kikwit.Entities.CartographieStructure;
 import bdom.kikwit.Entities.Etablissement;
 import bdom.kikwit.Entities.Personnel;
 import bdom.kikwit.Mappers.PersonnelMapper;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service @AllArgsConstructor @Transactional
@@ -43,7 +45,19 @@ public class PersonnalServiceImpl implements PersonnalService {
         repository.save(save);
         return mapper.toPersonnelResponseDto(save);
     }
-// Liste de toutes les informations du personnel
+
+    @Override
+    public String delete(Long id) {
+
+        Optional<Personnel> personnel = repository.findById(id);
+        if (personnel.isPresent()){
+            repository.deleteById(id);
+            return " Personnel supprimé avec succes";
+        }
+        return "Aucun personnel trouvée";
+    }
+
+    // Liste de toutes les informations du personnel
     @Override
     public List<PersonnelResponseDto> getAll() {
        List<Personnel>  list = repository.findAll();

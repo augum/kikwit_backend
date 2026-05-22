@@ -11,5 +11,6 @@ public interface CartographieStructureService{
     CartographieStructureResponseDto save(CartographieStructureRequestDto requestDto);
     CartographieStructureResponseDto update(Long id, CartographieStructureRequestDto requestDto);
     CartographieStructureResponseDto getOne(Long id);
+    String delete(Long id);
     List<CartographieStructureResponseDto> liste();
 }

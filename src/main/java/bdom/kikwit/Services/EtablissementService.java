@@ -9,5 +9,6 @@ public interface EtablissementService {
     EtablissementResponseDto save(EtablissementRequestDto requestDto);
     EtablissementResponseDto update(Long id, EtablissementRequestDto requestDto);
     EtablissementResponseDto getOne(Long id);
+    String delete(Long id);
     List<EtablissementResponseDto> getAll();
 }

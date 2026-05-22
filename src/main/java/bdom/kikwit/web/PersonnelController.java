@@ -34,4 +34,9 @@ public class PersonnelController {
     public PersonnelResponseDto update(@PathVariable Long id, @RequestBody PersonnelRequestDto requestDto){
         return service.update(id,requestDto);
     }
+    @DeleteMapping(path = "/personnels/{id}")
+    @Operation(summary = "Supprimé un personnel")
+    public String delete(@PathVariable Long id){
+        return service.delete(id);
+    }
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /*
@@ -44,7 +45,18 @@ public class CategorieServiceImpl implements CategorieService {
         Categorie categorie = repository.findById(id).get();
         return mapper.toCategorieResponseDto(categorie);
     }
-// retourne toutes les catégorie
+
+    @Override
+    public String delete(Long id) {
+        Optional<Categorie> categorie = repository.findById(id);
+        if(categorie.isPresent()){
+            repository.deleteById(id);
+            return "Categorie supprimée avec succès";
+        }
+        return "Aucune categorie trouvée";
+    }
+
+    // retourne toutes les catégorie
     @Override
     public List<CategorieResponseDto> getAll() {
         List<Categorie> categorieList = repository.findAll();

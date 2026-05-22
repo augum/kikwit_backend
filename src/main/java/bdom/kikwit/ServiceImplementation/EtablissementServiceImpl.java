@@ -2,6 +2,7 @@ package bdom.kikwit.ServiceImplementation;
 
 import bdom.kikwit.Dto.EtablissementRequestDto;
 import bdom.kikwit.Dto.EtablissementResponseDto;
+import bdom.kikwit.Entities.CartographieStructure;
 import bdom.kikwit.Entities.Categorie;
 import bdom.kikwit.Entities.Etablissement;
 import bdom.kikwit.Mappers.EtablissementMapper;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service @AllArgsConstructor @Transactional
@@ -48,7 +50,18 @@ public class EtablissementServiceImpl implements EtablissementService {
         Etablissement etablissement = repository.findById(id).get();
         return mapper.toEtablissementResponseDto(etablissement);
     }
- // liste des etablissements
+
+    @Override
+    public String delete(Long id) {
+        Optional<Etablissement> etablissement = repository.findById(id);
+        if (etablissement.isPresent()){
+            repository.deleteById(id);
+            return " Etablissement supprimée avec succes";
+        }
+        return "Aucun Etablissement trouvé";
+    }
+
+    // liste des etablissements
     @Override
     public List<EtablissementResponseDto> getAll() {
         List<Etablissement> list = repository.findAll();

@@ -45,4 +45,10 @@ public class EtablissementController {
     public EtablissementResponseDto update(@PathVariable Long id,@RequestBody EtablissementRequestDto requestDto){
         return  service.update(id,requestDto);
     }
+
+    @DeleteMapping(path = "/etablissements/{id}")
+    @Operation(summary = "Supprimé un etablissement")
+    public String delete(@PathVariable Long id){
+        return service.delete(id);
+    }
 }

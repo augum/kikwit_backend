@@ -45,4 +45,10 @@ public class CartographieStructureServiceController {
     public CartographieStructureResponseDto getOne(@PathVariable Long id){
         return  service.getOne(id);
     }
+
+    @DeleteMapping(path = "/cartographies/{id}")
+    @Operation(summary = "Suppression d'une cartographie")
+    public String delete(@PathVariable Long id){
+        return  service.delete(id);
+    }
 }

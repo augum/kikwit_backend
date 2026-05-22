@@ -4,6 +4,7 @@ import bdom.kikwit.Dto.CartographieStructureRequestDto;
 import bdom.kikwit.Dto.CartographieStructureResponseDto;
 import bdom.kikwit.Dto.CategorieRequestDto;
 import bdom.kikwit.Entities.CartographieStructure;
+import bdom.kikwit.Entities.Role;
 import bdom.kikwit.Mappers.CartographieStructureMapper;
 import bdom.kikwit.Repositories.CartographieStructureRepository;
 import bdom.kikwit.Services.CartographieStructureService;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -55,7 +57,18 @@ public class CartographieStructureServiceImpl implements CartographieStructureSe
         CartographieStructure getOne= repository.findById(id).get();
         return mapper.ToCartographieStructureResponseDto(getOne);
     }
-// Lister toutes les cartographie
+
+    @Override
+    public String delete(Long id) {
+        Optional<CartographieStructure> cartographieStructure = repository.findById(id);
+        if (cartographieStructure.isPresent()){
+            repository.deleteById(id);
+            return " Cartographie supprimée avec succes";
+        }
+        return "Aucune cartographie trouvée";
+    }
+
+    // Lister toutes les cartographie
     @Override
     public List<CartographieStructureResponseDto> liste() {
         List<CartographieStructure> structureList = repository.findAll();

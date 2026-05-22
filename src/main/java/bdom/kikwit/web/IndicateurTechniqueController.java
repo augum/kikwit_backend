@@ -33,4 +33,9 @@ public class IndicateurTechniqueController {
     public IndicateurTechniqueResponseDto update(@PathVariable Long id, @RequestBody IndicateurTechniqueRequestDto requestDto){
        return service.update(id,requestDto);
     }
+    @DeleteMapping(path = "/indicateurs/{id}")
+    @Operation(summary = "Supprimé un indicateur technique")
+    public String delete(@PathVariable Long id){
+        return service.delete(id);
+    }
 }
