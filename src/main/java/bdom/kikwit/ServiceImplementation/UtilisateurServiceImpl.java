@@ -55,12 +55,21 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
         List<Utilisateur> utilisateurList = repository.findAll();
 
-        for(Utilisateur it: utilisateurList){
-            Role role = rolerepository.findById(it.getId_role()).get();
-            Etablissement etablissement = etablissementRepository.findById(it.getId_ess()).get();
+        for (Utilisateur it : utilisateurList) {
 
-            it.setRole(role);
-            it.setEtablissement(etablissement);
+            if (it.getId_role() != null) {
+                Role role = rolerepository.findById(it.getId_role()).orElse(null);
+                it.setRole(role);
+            } else {
+                it.setRole(null);
+            }
+
+            if (it.getId_ess() != null) {
+                Etablissement etablissement = etablissementRepository.findById(it.getId_ess()).orElse(null);
+                it.setEtablissement(etablissement);
+            } else {
+                it.setEtablissement(null);
+            }
         }
         return utilisateurList.stream()
                 .map(utilisateur -> mapper.toUtilisateurResponseDto(utilisateur))
