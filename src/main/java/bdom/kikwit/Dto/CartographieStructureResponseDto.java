@@ -1,7 +1,10 @@
 package bdom.kikwit.Dto;
 
+import bdom.kikwit.Entities.Etablissement;
+import bdom.kikwit.Entities.SourceEnergie;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,4 +27,6 @@ public class CartographieStructureResponseDto {
     private String forage;
     private String incinerateur;
     private String equipement_biom;
+    private SourceEnergie sourceEnergie;
+    private Etablissement etablissement;
 }

@@ -4,9 +4,13 @@ import bdom.kikwit.Dto.CartographieStructureRequestDto;
 import bdom.kikwit.Dto.CartographieStructureResponseDto;
 import bdom.kikwit.Dto.CategorieRequestDto;
 import bdom.kikwit.Entities.CartographieStructure;
+import bdom.kikwit.Entities.Etablissement;
 import bdom.kikwit.Entities.Role;
+import bdom.kikwit.Entities.SourceEnergie;
 import bdom.kikwit.Mappers.CartographieStructureMapper;
 import bdom.kikwit.Repositories.CartographieStructureRepository;
+import bdom.kikwit.Repositories.EtablissementRepository;
+import bdom.kikwit.Repositories.SourceEnergieRepository;
 import bdom.kikwit.Services.CartographieStructureService;
 
 import lombok.AllArgsConstructor;
@@ -23,6 +27,8 @@ import java.util.stream.Collectors;
 public class CartographieStructureServiceImpl implements CartographieStructureService {
     private CartographieStructureMapper mapper;
     private CartographieStructureRepository repository;
+    private EtablissementRepository etablissementRepository;
+    private SourceEnergieRepository sourceEnergieRepository;
 // enregistrement d'une cartographie de structure
     @Override
     public CartographieStructureResponseDto save(CartographieStructureRequestDto requestDto) {
@@ -72,6 +78,13 @@ public class CartographieStructureServiceImpl implements CartographieStructureSe
     @Override
     public List<CartographieStructureResponseDto> liste() {
         List<CartographieStructure> structureList = repository.findAll();
+        for(CartographieStructure cat: structureList){
+            Etablissement et = etablissementRepository.findById(cat.getId_ess()).get();
+            SourceEnergie se = sourceEnergieRepository.findById(cat.getId_se()).get();
+
+            cat.setEtablissement(et);
+            cat.setSourceEnergie(se);
+        }
         return structureList
                 .stream()
                 .map(cartographieStructur->mapper.ToCartographieStructureResponseDto(cartographieStructur))
