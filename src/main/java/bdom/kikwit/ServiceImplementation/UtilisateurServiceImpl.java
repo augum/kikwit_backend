@@ -2,9 +2,12 @@ package bdom.kikwit.ServiceImplementation;
 
 import bdom.kikwit.Dto.UtilisateurRequestDto;
 import bdom.kikwit.Dto.UtilisateurResponseDto;
+import bdom.kikwit.Entities.Etablissement;
 import bdom.kikwit.Entities.Role;
 import bdom.kikwit.Entities.Utilisateur;
 import bdom.kikwit.Mappers.UtilisateurMapper;
+import bdom.kikwit.Repositories.EtablissementRepository;
+import bdom.kikwit.Repositories.Rolerepository;
 import bdom.kikwit.Repositories.UtilisateurRepository;
 import bdom.kikwit.Services.UtilisateurService;
 import lombok.AllArgsConstructor;
@@ -21,6 +24,8 @@ import java.util.stream.Collectors;
 public class UtilisateurServiceImpl implements UtilisateurService {
     private UtilisateurRepository repository;
     private UtilisateurMapper mapper;
+    private Rolerepository rolerepository;
+    private EtablissementRepository etablissementRepository;
     /**
      * @param requestDto
      * @return
@@ -49,6 +54,14 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     public List<UtilisateurResponseDto> list() {
 
         List<Utilisateur> utilisateurList = repository.findAll();
+
+        for(Utilisateur it: utilisateurList){
+            Role role = rolerepository.findById(it.getId_role()).get();
+            Etablissement etablissement = etablissementRepository.findById(it.getId_ess()).get();
+
+            it.setRole(role);
+            it.setEtablissement(etablissement);
+        }
         return utilisateurList.stream()
                 .map(utilisateur -> mapper.toUtilisateurResponseDto(utilisateur))
                 .collect(Collectors.toList());
