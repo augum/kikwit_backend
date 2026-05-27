@@ -19,5 +19,6 @@ public class UtilisateurRequestDto {
     private Long id_role;
     @Schema(description = "identifiant de l'etablissement", example = "1")
     private Long id_ess;
+    @Schema(description = "email de l'utilisateur", example = "exemple@gmail.com")
     private String email;
 }
