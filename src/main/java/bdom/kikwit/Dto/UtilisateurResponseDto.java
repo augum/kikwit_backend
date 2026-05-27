@@ -20,4 +20,5 @@ public class UtilisateurResponseDto {
     private Long id_ess;
     private Role role;
     private Etablissement etablissement;
+    private String email;
 }

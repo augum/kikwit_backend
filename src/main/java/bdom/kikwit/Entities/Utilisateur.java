@@ -16,6 +16,7 @@ public class Utilisateur {
     private String password;
     private Long id_role;
     private Long id_ess;
+    private String email;
     @Transient
     private Role role;
     @Transient
