@@ -11,8 +11,8 @@ import bdom.kikwit.Repositories.Rolerepository;
 import bdom.kikwit.Repositories.UtilisateurRepository;
 import bdom.kikwit.Services.UtilisateurService;
 import lombok.AllArgsConstructor;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+//import org.springframework.mail.SimpleMailMessage;
+//import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,7 +28,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     private UtilisateurMapper mapper;
     private Rolerepository rolerepository;
     private EtablissementRepository etablissementRepository;
-    private JavaMailSender mailSender;
+//    private JavaMailSender mailSender;
     /**
      * @param requestDto
      * @return
