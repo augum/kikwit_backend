@@ -37,14 +37,14 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     public UtilisateurResponseDto save(UtilisateurRequestDto requestDto) {
         Utilisateur utilisateur = mapper.fromUtilisateurRequestDto(requestDto);
         Utilisateur saveUtilisateur = repository.save(utilisateur);
-        SimpleMailMessage mail = new SimpleMailMessage();
+        /*SimpleMailMessage mail = new SimpleMailMessage();
         mail.setFrom("augumakuma@gmail.com");
         mail.setTo(saveUtilisateur.getEmail());
         mail.setSubject("Bienvenu sur Sclinik");
         mail.setText("Bienvenu sur Sclinik, un compte a été crée pour vous et voici les informations pour vous connecter" +
                 "cliquer sur le lien: " + "http://localhost:8081/login" +
                 " Login: " + saveUtilisateur.getLogin() + " Mot de passe: " + saveUtilisateur.getPassword());
-        mailSender.send(mail);
+        mailSender.send(mail);*/
         return mapper.toUtilisateurResponseDto(saveUtilisateur);
     }
 
