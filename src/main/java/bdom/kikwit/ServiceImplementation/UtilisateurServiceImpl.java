@@ -11,6 +11,8 @@ import bdom.kikwit.Repositories.Rolerepository;
 import bdom.kikwit.Repositories.UtilisateurRepository;
 import bdom.kikwit.Services.UtilisateurService;
 import lombok.AllArgsConstructor;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +28,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     private UtilisateurMapper mapper;
     private Rolerepository rolerepository;
     private EtablissementRepository etablissementRepository;
+    private JavaMailSender mailSender;
     /**
      * @param requestDto
      * @return
@@ -34,6 +37,13 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     public UtilisateurResponseDto save(UtilisateurRequestDto requestDto) {
         Utilisateur utilisateur = mapper.fromUtilisateurRequestDto(requestDto);
         Utilisateur saveUtilisateur = repository.save(utilisateur);
+        SimpleMailMessage mail = new SimpleMailMessage();
+        mail.setTo(saveUtilisateur.getEmail());
+        mail.setSubject("Bienvenu sur Sclinik");
+        mail.setText("Bienvenu sur Sclinik, un compte a été crée pour vous et voici les informations pour vous connecter" +
+                "cliquer sur le lien: " + "http://localhost:8081/login" +
+                " Login: " + saveUtilisateur.getLogin() + " Mot de passe: " + saveUtilisateur.getPassword());
+        mailSender.send(mail);
         return mapper.toUtilisateurResponseDto(saveUtilisateur);
     }
 
