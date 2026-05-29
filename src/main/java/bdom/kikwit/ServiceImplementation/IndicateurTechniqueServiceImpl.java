@@ -51,7 +51,7 @@ public class IndicateurTechniqueServiceImpl implements IndicateurTechniqueServic
         technique.setTransfusion(fromDto.getTransfusion());
         technique.setHospitalise(fromDto.getHospitalise());
         technique.setInfePostOp(fromDto.getInfePostOp());
-        technique.setNv_acc_pf(fromDto.setNv_acc_pf);
+        technique.setNv_acc_pf(fromDto.getNv_acc_pf());
         technique.setNv_casCuratif(fromDto.getNv_casCuratif());
         technique.setTransfusionTeste4Marquer(fromDto.getTransfusionTeste4Marquer());
         technique.setPeriode(fromDto.getPeriode());
