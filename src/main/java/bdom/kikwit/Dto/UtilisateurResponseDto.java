@@ -14,6 +14,9 @@ import lombok.NoArgsConstructor;
 public class UtilisateurResponseDto {
 
     private Long id;
+    private String nom;
+    private String postnom;
+    private String prenom;
     private String login;
     private String password;
     private Long id_role;

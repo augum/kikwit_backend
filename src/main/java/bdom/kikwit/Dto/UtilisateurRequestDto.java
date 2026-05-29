@@ -11,6 +11,12 @@ import lombok.NoArgsConstructor;
 public class UtilisateurRequestDto {
     @Schema(description = "id de l'utilisateur", example = "1")
     private Long id;
+    @Schema(description = "nom de l'utilisateur", example = "Itond")
+    private String nom;
+    @Schema(description = "postnom de l'utilisateur", example = "Monguale")
+    private String postnom;
+    @Schema(description = "prenom de l'utilisateur", example = "Defgra")
+    private String prenom;
     @Schema(description = "Login de l'utilisateur", example = "Makuma")
     private String login;
     @Schema(description = "Mot de passe", example = "Fi1@234")

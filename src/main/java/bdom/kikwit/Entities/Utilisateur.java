@@ -12,6 +12,9 @@ public class Utilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String nom;
+    private String postnom;
+    private String prenom;
     private String login;
     private String password;
     private Long id_role;
