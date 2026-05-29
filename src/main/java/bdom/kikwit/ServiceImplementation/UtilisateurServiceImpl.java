@@ -17,6 +17,7 @@ import com.sendgrid.SendGrid;
 import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
+import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -85,7 +86,10 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
         return mapper.toUtilisateurResponseDto(saveUtilisateur);
     }
-
+    @PostConstruct
+    public void debugKey() {
+        System.out.println("SENDGRID KEY >>> [" + apiKey + "]");
+    }
     /**
      * @param id
      * @return
