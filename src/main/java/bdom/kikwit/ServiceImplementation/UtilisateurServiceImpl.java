@@ -18,6 +18,7 @@ import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -30,14 +31,14 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Transactional
 public class UtilisateurServiceImpl implements UtilisateurService {
-    private UtilisateurRepository repository;
-    private UtilisateurMapper mapper;
-    private Rolerepository rolerepository;
-    private EtablissementRepository etablissementRepository;
-    private JavaMailSender mailSender;
+    private final UtilisateurRepository repository;
+    private final UtilisateurMapper mapper;
+    private final Rolerepository rolerepository;
+    private final EtablissementRepository etablissementRepository;
+    private final JavaMailSender mailSender;
     @Value("${sendgrid.api.key}")
     private String apiKey;
     /**
@@ -60,10 +61,10 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
         Email from = new Email("augumakuma@gmail.com"); // email vérifié SendGrid
         Email recipient = new Email(saveUtilisateur.getEmail());
-
-        Content emailContent = new Content("text/plain", "Bienvenu sur Sclinik, un compte a été crée pour vous et voici les informations pour vous connecter" +
+        String message= "Bienvenu sur Sclinik, un compte a été crée pour vous et voici les informations pour vous connecter" +
                 "cliquer sur le lien: " + "http://localhost:8081/login" +
-                " Login: " + saveUtilisateur.getLogin() + " Mot de passe: " + saveUtilisateur.getPassword());
+                " Login: " + saveUtilisateur.getLogin() + " Mot de passe: " + saveUtilisateur.getPassword();
+        Content emailContent = new Content("text/plain",message );
 
         String subject = "Bienvenue";
         Mail mail = new Mail(from, subject, recipient, emailContent);
