@@ -19,40 +19,40 @@ public class IndicateurTechniqueRequestDto {
     @Schema(description = "Identifiant de la structure de santé", example = "25")
     private Long id_ess;
     @Schema(description = "Nombre des nouveaux cas curatifs", example = "25")
-    private int nb_nv_casCuratif;
+    private int casCuratif;
     @Schema(description = "Nombre de premier cpn", example = "25")
-    private int nb_cpn1;
+    private int cpn1;
     @Schema(description = "Nombre de cpn de la première à la seizième semaine", example = "25")
-    private int nb_cpn1_16;
+    private int cpn1_16;
     @Schema(description = "Nombre de cpn 4", example = "25")
-    private int nb_cpn4;
+    private int cpn4;
     @Schema(description = "Nombre APA", example = "25")
-    private int nb_apa;
+    private int apa;
     @Schema(description = "Nombre nouveau accouchement", example = "25")
-    private int nb_nv_acc_pf;
+    private int acc_pf;
     @Schema(description = "Nombre de diabete notification", example = "25")
-    private int nb_diabeteNotification;
+    private int diabeteNotification;
     @Schema(description = "Nombre de transfusion", example = "25")
-    private int nb_transfusion;
+    private int transfusion;
     @Schema(description = "Nombre de transfusion testée au 4 marqueurs", example = "25")
-    private int nb_transfusionTeste4Marquer;
+    private int transfusionTeste4Marquer;
     @Schema(description = "Nombre de décès neonatal", example = "25")
-    private int nb_dc_neonat;
+    private int dc_neonat;
     @Schema(description = "Nombre de décès maternel", example = "25")
-    private int nb_dc_maternel;
+    private int dc_maternel;
     @Schema(description = "Nombre de chirurgie majeure", example = "25")
-    private int nb_chirurgieMajeure;
+    private int chirurgieMajeure;
     @Schema(description = "Nombre de cesarienne", example = "25")
-    private int nb_cesarienne;
+    private int cesarienne;
     @Schema(description = "Nombre des hospitalisés", example = "25")
-    private int nb_hospitalise;
+    private int hospitalise;
     @Schema(description = "Nombre de décès avant 48H", example = "25")
-    private int nb_dc_av48h;
+    private int dc_av48h;
     @Schema(description = "Nombre de décès après 48H", example = "25")
-    private int nb_dc_ap48h;
+    private int dc_ap48h;
     @Schema(description = "Nombre d'infection après opération'", example = "25")
-    private int nb_infePostOp;
+    private int infePostOp;
     @Schema(description = "Nombre de diarhé simple", example = "25")
-    private int nb_diarheSimple;
+    private int diarheSimple;
 
 }
