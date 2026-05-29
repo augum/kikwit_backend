@@ -15,12 +15,12 @@ public class IndicateurTechnique {
     private Long id;
     private LocalDate periode;
     private Long id_ess;
-    private int casCuratif;
+    private int nv_casCuratif;
     private int cpn1;
     private int cpn1_16;
     private int cpn4;
     private int apa;
-    private int acc_pf;
+    private int nv_acc_pf;
     private int diabeteNotification;
     private int transfusion;
     private int transfusionTeste4Marquer;

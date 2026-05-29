@@ -19,7 +19,7 @@ public class IndicateurTechniqueRequestDto {
     @Schema(description = "Identifiant de la structure de santé", example = "25")
     private Long id_ess;
     @Schema(description = "Nombre des nouveaux cas curatifs", example = "25")
-    private int casCuratif;
+    private int nv_casCuratif;
     @Schema(description = "Nombre de premier cpn", example = "25")
     private int cpn1;
     @Schema(description = "Nombre de cpn de la première à la seizième semaine", example = "25")
@@ -29,7 +29,7 @@ public class IndicateurTechniqueRequestDto {
     @Schema(description = "Nombre APA", example = "25")
     private int apa;
     @Schema(description = "Nombre nouveau accouchement", example = "25")
-    private int acc_pf;
+    private int nv_acc_pf;
     @Schema(description = "Nombre de diabete notification", example = "25")
     private int diabeteNotification;
     @Schema(description = "Nombre de transfusion", example = "25")
