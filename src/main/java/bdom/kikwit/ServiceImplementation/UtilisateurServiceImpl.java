@@ -40,8 +40,8 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     private final Rolerepository rolerepository;
     private final EtablissementRepository etablissementRepository;
     private final JavaMailSender mailSender;
-    @Value("${sendgrid.api.key}")
-    private String apiKey;
+   /* @Value("${sendgrid.api.key}")
+    private String apiKey;*/
     /**
      * @param requestDto
      * @return
@@ -50,17 +50,17 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     public UtilisateurResponseDto save(UtilisateurRequestDto requestDto) throws IOException {
         Utilisateur utilisateur = mapper.fromUtilisateurRequestDto(requestDto);
         Utilisateur saveUtilisateur = repository.save(utilisateur);
-       /* SimpleMailMessage mail = new SimpleMailMessage();
+        SimpleMailMessage mail = new SimpleMailMessage();
         mail.setFrom("augumakuma@gmail.com");
         mail.setTo(saveUtilisateur.getEmail());
         mail.setSubject("Bienvenu sur Sclinik");
-        mail.setText("Bienvenu sur Sclinik, un compte a été crée pour vous et voici les informations pour vous connecter" +
-                "cliquer sur le lien: " + "http://localhost:8081/login" +
+        mail.setText("Bienvenu sur Sclinik "+saveUtilisateur.getNom()+" "+saveUtilisateur.getPrenom()+ " un compte a été crée pour vous et voici les informations pour vous connecter  " +
+                " : cliquer sur le lien: " + "http://localhost:8081/login" +
                 " Login: " + saveUtilisateur.getLogin() + " Mot de passe: " + saveUtilisateur.getPassword());
-        mailSender.send(mail);*/
+        mailSender.send(mail);
         //send mail by sendgri
 
-        Email from = new Email("augumakuma@gmail.com"); // email vérifié SendGrid
+       /* Email from = new Email("augumakuma@gmail.com"); // email vérifié SendGrid
         Email recipient = new Email(saveUtilisateur.getEmail());
         String message= "Bienvenu sur Sclinik, un compte a été crée pour vous et voici les informations pour vous connecter" +
                 "cliquer sur le lien: " + "http://localhost:8081/login" +
@@ -82,14 +82,11 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
         System.out.println("STATUS: " + response.getStatusCode());
         System.out.println("BODY: " + response.getBody());
-
+*/
 
         return mapper.toUtilisateurResponseDto(saveUtilisateur);
     }
-    @PostConstruct
-    public void debugKey() {
-        System.out.println("SENDGRID KEY >>> [" + apiKey + "]");
-    }
+
     /**
      * @param id
      * @return
@@ -142,7 +139,20 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         getUtilisateur.setPassword(utilisateur.getPassword());
         getUtilisateur.setId_role(utilisateur.getId_role());
         getUtilisateur.setId_ess(utilisateur.getId_ess());
+        getUtilisateur.setEmail(utilisateur.getEmail());
+        getUtilisateur.setNom(utilisateur.getNom());
+        getUtilisateur.setPrenom(utilisateur.getPrenom());
+        getUtilisateur.setPostnom(utilisateur.getPostnom());
         Utilisateur save = repository.save(getUtilisateur);
+        //Envoie l'email pour la modification
+        SimpleMailMessage mail = new SimpleMailMessage();
+        mail.setFrom("augumakuma@gmail.com");
+        mail.setTo(getUtilisateur.getEmail());
+        mail.setSubject("Bienvenu sur Sclinik");
+        mail.setText("Bienvenu sur Sclinik "+getUtilisateur.getNom()+" "+getUtilisateur.getPrenom()+ " Votre compte a été réinitialisé et voici les informations pour vous connecter  " +
+                " : cliquer sur le lien: " + "http://localhost:8081/login" +
+                " Login: " + getUtilisateur.getLogin() + " Mot de passe: " + getUtilisateur.getPassword());
+        mailSender.send(mail);
         return mapper.toUtilisateurResponseDto(save);
     }
 
